@@ -1,0 +1,11 @@
+import { EditItemInGangPageDB } from "./EditItemInGangPageDB";
+
+/**
+ *
+ * @param {*} answers
+ *
+ * si succès, retour a la liste, et modifie le shizzle
+ */
+export function onItemCreationSuccess(answers) {
+  EditItemInGangPageDB({ answers });
+}

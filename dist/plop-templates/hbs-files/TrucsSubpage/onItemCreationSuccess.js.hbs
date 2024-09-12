@@ -1,0 +1,11 @@
+import { ZeAllMightySubpageDB } from "./ZeAllMightySubpageDB";
+
+/**
+ *
+ * @param {*} answers
+ *
+ * si succès, retour a la liste, et modifie le shizzle
+ */
+export function onItemCreationSuccess(answers, route) {
+  ZeAllMightySubpageDB({ answers, route });
+}

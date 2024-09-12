@@ -1,0 +1,49 @@
+import { SqliteReduxGangPage } from "src/reduxState/GangPage/GangPageGetterSetter";
+
+// getter/setter
+import { SqliteReduxGangPageState } from "src/reduxState/GangPageState/GangPageStateGetterSetter";
+import { GoToGangPageList } from "../NavHelpers/GoToGangPageList";
+
+/**
+ *
+ * permet de modifier un item stocké dans sqlite + redux
+ *
+ */
+export const EditItemInGangPageDB = ({ answers }) => {
+  /* PLOP_INJECT_ANSWER_VALUE */
+  const name = answers["GetGangPageItemName"].value;
+
+  // getter, contient le state actuel
+  const GangPageState = SqliteReduxGangPageState.GetGangPageStateFirstRow();
+
+  const currentItemUniqueId = GangPageState.itemUniqueId;
+  const currentItem =
+    SqliteReduxGangPage.GetItemByUniqueID(currentItemUniqueId);
+  const editedItem = {
+    ...currentItem,
+
+    /* PLOP_INJECT_VALUE_IN_DB */
+
+    name,
+  };
+
+  console.log(`edited item = ${JSON.stringify(editedItem)}`);
+
+  SqliteReduxGangPage.UpdateSpecificRowsFromDB({
+    row: editedItem,
+    rowName: "uniqueId",
+    rowValue: editedItem.uniqueId,
+    onSuccess: (row) => {
+      console.log("item modifé avec succès dans GangPage.");
+
+      GoToGangPageList();
+    },
+    onError: (e) => {
+      console.log(
+        "Un problème est survenu durant la modif d'item dans GangPage."
+      );
+
+      GoToGangPageList();
+    },
+  });
+};

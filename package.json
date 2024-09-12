@@ -1,0 +1,55 @@
+{
+  "name": "maslow-gpt",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A powerful and simple CLI app that allows you to generate code, art, text-to-speech, and many other things, with ChatGPT (Without the need for an OPENAI API Key, thanks to a one-time subscription model, for 15 $ only ;-)",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c",
+    "reset-main-branch": "git checkout --orphan latest_branch && git add -A && git commit -am \"First commit ;-)\" && git branch -D main && git branch -m main && git push -f --set-upstream origin main",
+    "push": "(git add . && git commit -m \"I'm a bigger pusher than Ice-T homie !!!\" && git push) || exit 0",
+    "first-push": "npm run git-init && git add . && git commit -m \"first commit\" && git branch -M main && git remote add origin https://github.com/MaslowCorporation/MaslowGPT.git && git push -u origin main",
+    "first-push-dev": "npm run git-init && git add . && git commit -m \"first commit\" && git branch -M main && git remote add origin git@github.com:MaslowCorporation/MaslowGPT.git && git push -u origin main",
+    "git-init": "rimraf .git && git init",
+    "lint": "eslint .",
+    "fix-lint-errors": "eslint . --fix",
+    "run-maslow": "node ./app_exports.js",
+    "publish:test": "npm version patch --no-git-tag-version && npm publish --registry http://localhost:4873 && npm install -g maslow-gpt@latest --registry http://localhost:4873",
+    "publish:production": "npm login && npm publish"
+  },
+  "bin": {
+    "maslow": "./dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaslowCorporation/MaslowGPT.git"
+  },
+  "dependencies": {},
+  "keywords": [
+    "gpt",
+    "openai",
+    "chatgpt",
+    "A.I.",
+    "code",
+    "generation",
+    "A.I.",
+    "art",
+    "Javascript",
+    "Typescript",
+    "React",
+    "Native",
+    "Node.js",
+    "server",
+    "internationalization",
+    "code",
+    "templates",
+    "subscription"
+  ],
+  "author": "JEAN-LOUIS DONAT",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaslowCorporation/MaslowGPT/issues"
+  },
+  "homepage": "https://github.com/MaslowCorporation/MaslowGPT#readme"
+}

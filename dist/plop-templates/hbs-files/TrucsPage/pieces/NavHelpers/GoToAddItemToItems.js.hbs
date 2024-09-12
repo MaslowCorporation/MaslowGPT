@@ -1,0 +1,22 @@
+import { SqliteReduxGangPageState } from "src/reduxState/GangPageState/GangPageStateGetterSetter";
+import { SetPageState } from "./SetPageState";
+import { GetUniqueID } from "src/services/GetUniqueID/GetUniqueID";
+
+/**
+ * Let's go back to AddItemToGangPage
+ */
+export function GoToAddItemToGangPage() {
+  // getter
+  const GangPageState = SqliteReduxGangPageState.GetGangPageStateFirstRow();
+
+  // setter
+  SetPageState({
+    ...GangPageState,
+
+    // l'écran actuellement affiché dans GangPage.js
+    chosenOne: "AddItemToGangPage",
+
+    itemUniqueId: GetUniqueID(7)
+  });
+
+}

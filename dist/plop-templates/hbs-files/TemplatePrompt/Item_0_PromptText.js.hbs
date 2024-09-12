@@ -1,0 +1,40 @@
+import { getDataFromNPMMaslowJSON } from
+"../../../../services/GetDataFromNPMMaslowJSONObj/getDataFromNPMMaslowJSONObj.js";
+
+const GithubRepoURLPromptText = (appRootPath) => {
+return {
+type: "input",
+
+filter: function (answer) {
+// Use the trim() method to remove whitespace from both sides of the answer
+return answer?.trim();
+},
+
+name: "GithubRepoURL",
+default: (data) => {
+return getDataFromNPMMaslowJSON("GithubRepoURL");
+},
+
+message: `Text me bby`,
+};
+};
+
+const GithubRepoURLPromptEditor = (appRootPath) => {
+return {
+type: "editor",
+
+filter: function (answer) {
+// Use the trim() method to remove whitespace from both sides of the answer
+return answer?.trim();
+},
+
+name: "GithubRepoURL",
+default: (data) => {
+return getDataFromNPMMaslowJSON("GithubRepoURL");
+},
+
+message: `Text me bby`,
+};
+};
+
+export { GithubRepoURLPromptText, GithubRepoURLPromptEditor };

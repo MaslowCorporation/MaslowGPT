@@ -1,0 +1,143 @@
+/* PLOP_IMPORT_SortArrayByLength */
+import { SortArrayByLength } from "../../../../services/SortArrayByLength/SortArrayByLength.js";
+/* PLOP_IMPORT_SortArrayByLength */
+/* PLOP_IMPORT_RemoveDuplicatesFromArray */
+import { RemoveDuplicatesFromArray } from "../../../../services/RemoveDuplicatesFromArray/RemoveDuplicatesFromArray.js";
+/* PLOP_IMPORT_RemoveDuplicatesFromArray */
+
+import { GetSubfolders } from "./GetSubfolders.js";
+/* eslint-disable no-debugger */
+
+import { getDataFromNPMMaslowJSON } from "../../../../services/GetDataFromNPMMaslowJSONObj/getDataFromNPMMaslowJSONObj.js";
+
+import { GetSubfiles } from "./GetSubfiles.js";
+import { answers } from "../../../../../app_exports.js";
+import { Constants } from "../../../../AppConstants/Constants.js";
+import { GetTaggedSubfiles } from "./GetTaggedSubfiles.js";
+
+export const GithubRepoURLChoices = {
+  GithubRepoURLChoice1: ``,
+  GithubRepoURLChoice2: ``,
+  GithubRepoURLChoice3: ``,
+};
+
+export const GithubRepoURLPromptChoices = (appRootPath) => {
+  return {
+    type: "list",
+    name: "GithubRepoURL",
+    message: ``,
+
+    default: (data) => {
+      return (
+        getDataFromNPMMaslowJSON("GithubRepoURL") ??
+        GithubRepoURLChoices.GithubRepoURLChoice1
+      );
+    },
+
+    choices: [
+      // AJOUTE_TEMPLATE //
+      GithubRepoURLChoices.GithubRepoURLChoice1,
+      GithubRepoURLChoices.GithubRepoURLChoice2,
+      GithubRepoURLChoices.GithubRepoURLChoice3,
+    ],
+  };
+};
+
+export const GithubRepoURLPromptChoicesFolders = (appRootPath) => {
+  return {
+    type: "list",
+    name: "GithubRepoURL",
+    message: `Folders bby`,
+
+    default: (data) => {
+      return (
+        getDataFromNPMMaslowJSON("GithubRepoURL") ??
+        GithubRepoURLChoices.GithubRepoURLChoice1
+      );
+    },
+
+    choices: (data) => {
+      const subfolders = GetSubfolders(appRootPath);
+
+      subfolders?.unshift("<", answers.AffineGithubRepoURL);
+
+      return subfolders ?? ["<"];
+    },
+  };
+};
+
+export const GithubRepoURLPromptChoicesFiles = (appRootPath) => {
+  return {
+    type: "list",
+    name: "GithubRepoURL",
+    message: `Files bby`,
+
+    default: (data) => {
+      return (
+        getDataFromNPMMaslowJSON("GithubRepoURL") ??
+        GithubRepoURLChoices.GithubRepoURLChoice1
+      );
+    },
+
+    choices: (data) => {
+      const subfiles = GetSubfiles(appRootPath);
+
+      subfiles?.unshift("<", Constants.noChoice);
+
+      return subfiles ?? ["<"];
+    },
+  };
+};
+
+export const GithubRepoURLPromptChoicesAll = (appRootPath) => {
+  return {
+    type: "list",
+    name: "GithubRepoURL",
+    message: `Files and folders bby`,
+
+    default: (data) => {
+      return (
+        getDataFromNPMMaslowJSON("GithubRepoURL") ??
+        GithubRepoURLChoices.GithubRepoURLChoice1
+      );
+    },
+
+    choices: (data) => {
+      const subfilesNSubfolders = [
+        ...GetSubfiles(appRootPath),
+        ...GetSubfolders(appRootPath),
+      ];
+
+      subfilesNSubfolders?.unshift(
+        "<",
+        Constants.noChoice,
+        answers.AffineGithubRepoURL
+      );
+
+      return SortArrayByLength(RemoveDuplicatesFromArray(subfilesNSubfolders));
+    },
+  };
+};
+
+export const GithubRepoURLPromptChoicesTaggedFiles = (appRootPath) => {
+  return {
+    type: "list",
+    name: "GithubRepoURL",
+    message: `Tagged Files bby`,
+
+    default: (data) => {
+      return (
+        getDataFromNPMMaslowJSON("GithubRepoURL") ??
+        GithubRepoURLChoices.GithubRepoURLChoice1
+      );
+    },
+
+    choices: (data) => {
+      const tagged_subfiles = GetTaggedSubfiles(appRootPath);
+
+      tagged_subfiles?.unshift("<", Constants.noChoice);
+
+      return tagged_subfiles ?? ["<"];
+    },
+  };
+};

@@ -1,0 +1,39 @@
+//import { createLogoutFolder1 } from "./pieces/createLogoutFolder1/createLogoutFolder1.js";
+//import { createLogoutFolder2 } from "./pieces/createLogoutFolder2/createLogoutFolder2.js";
+
+
+// PLOP_IMPORT_ACTION
+
+/**
+ *
+ * @param {*} appRootPath
+ * @param {*} promptData
+ *
+ * @returns
+ *
+ *
+ * Ici, crée 0 ou plusieurs dossier a partir de Logouts, si besoin.
+ * Uncomment/comment selon tes feelings
+ */
+function LogoutActions(promptData, appRootPath, plop) {
+  //const LogoutFolder1 = createLogoutFolder1(promptData);
+  //const LogoutFolder2 = createLogoutFolder2(promptData);
+
+  //const REQUETE_CHAT_GPT_QUESTION = { type: "REQUETE_CHAT_GPT_QUESTION" };
+  //const CREATION_HISTORIQUE = { type: "CREATION_HISTORIQUE" };
+  //const OUVRE_FICHIERS_CREES = { type: "OUVRE_FICHIERS_CREES" };
+
+  return [
+    // PLOP_IMPORT_ACTION_USE
+
+    //REQUETE_CHAT_GPT_QUESTION,
+    //CREATION_HISTORIQUE,
+    //OUVRE_FICHIERS_CREES,
+
+    //...LogoutFolder1,
+    //...LogoutFolder2,
+
+  ]?.filter((elm) => elm);
+}
+
+export { LogoutActions };

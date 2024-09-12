@@ -1,0 +1,40 @@
+import { getDataFromNPMMaslowJSON } from
+"../../../../services/GetDataFromNPMMaslowJSONObj/getDataFromNPMMaslowJSONObj.js";
+
+const OutputFolderPathPromptText = (appRootPath) => {
+return {
+type: "input",
+
+filter: function (answer) {
+// Use the trim() method to remove whitespace from both sides of the answer
+return answer?.trim();
+},
+
+name: "OutputFolderPath",
+default: (data) => {
+return getDataFromNPMMaslowJSON("OutputFolderPath");
+},
+
+message: `Text me bby`,
+};
+};
+
+const OutputFolderPathPromptEditor = (appRootPath) => {
+return {
+type: "editor",
+
+filter: function (answer) {
+// Use the trim() method to remove whitespace from both sides of the answer
+return answer?.trim();
+},
+
+name: "OutputFolderPath",
+default: (data) => {
+return getDataFromNPMMaslowJSON("OutputFolderPath");
+},
+
+message: `Text me bby`,
+};
+};
+
+export { OutputFolderPathPromptText, OutputFolderPathPromptEditor };

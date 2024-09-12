@@ -1,0 +1,26 @@
+import { SqliteReduxGangPageState } from "src/reduxState/GangPageState/GangPageStateGetterSetter";
+
+/**
+ * Set l'index d'étape actuellement visionné à l'écran.
+ */
+export function SetCurrentIndex(newIndex) {
+  // getter
+  const GangPageState = SqliteReduxGangPageState.GetGangPageStateFirstRow();
+
+  // setter
+  SqliteReduxGangPageState.UpdateSpecificRowsFromDB({
+    row: {
+      ...GangPageState,
+
+      currentIndex: newIndex,
+    },
+    rowName: "uniqueId",
+    rowValue: "GangPageState",
+    onSuccess: (row) => {
+      /*console.log(
+        `state de page modifé avec succès dans GangPage.`
+      );*/
+    },
+    onError: (e) => {},
+  });
+}

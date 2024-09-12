@@ -1,0 +1,21 @@
+import { SqliteReduxGangPageState } from "src/reduxState/GangPageState/GangPageStateGetterSetter";
+import { SetPageState } from "./SetPageState";
+
+/**
+ * Let's go back to the item edit screen.
+ */
+export function GoToEditItemInGangPage(itemUniqueId) {
+  // getter
+  const GangPageState = SqliteReduxGangPageState.GetGangPageStateFirstRow();
+
+  SetPageState({
+    ...GangPageState,
+
+    // l'écran actuellement affiché dans GangPage.js
+    chosenOne: "EditItemInGangPage",
+
+    // identifiant unique de l'item en cours de modif
+    itemUniqueId: itemUniqueId,
+  });
+
+}

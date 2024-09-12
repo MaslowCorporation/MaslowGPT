@@ -1,0 +1,31 @@
+import { Constants } from "src/constants/Constants";
+import { SqliteReduxGangPageState } from "src/reduxState/GangPageState/GangPageStateGetterSetter";
+import { TryParse } from "src/services/TryParse/TryParse";
+
+/**
+ * L'écran est mounted.
+ */
+export function MarkScreenAsMounted(data) {
+  // getter
+  const GangPageState = SqliteReduxGangPageState.GetGangPageStateFirstRow();
+
+  // setter
+  SqliteReduxGangPageState.UpdateSpecificRowsFromDB({
+    row: {
+      ...GangPageState,
+
+      data: data && JSON.stringify(data),
+
+      // l'écran est mounted
+      isMounted: Constants.true,
+    },
+    rowName: "uniqueId",
+    rowValue: "GangPageState",
+    onSuccess: (row) => {
+      /*console.log(
+        `state de page modifé avec succès dans GangPage. is mounted: ${row.isMounted}`
+      );*/
+    },
+    onError: (e) => { },
+  });
+}

@@ -1,0 +1,23 @@
+/* PLOP_INJECT_IMPORT */
+
+// permet de supprimer un item de la liste d'items
+import { DeleteItemOrNot } from "./Questions/DeleteItemOrNot";
+
+// permet de créer/modifier les données d'un item.
+import { GangPageCreationList } from "../../AddItemToGangPage/GangPageCreationList/GangPageCreationList";
+
+/* PLOP_INJECT_GLOBAL_CODE */
+
+/**
+ *
+ * Ceci contient toutes les questions de GangPageEditList.
+ *
+ * Cela correspond aux questions de GangPageCreationList, avec une proposition de suppression en +.
+ */
+const GangPageEditList = () => {
+  return GangPageCreationList().concat([
+    /* PLOP_INJECT_CODE */
+  ].reverse()).concat(DeleteItemOrNot());
+};
+
+export { GangPageEditList };

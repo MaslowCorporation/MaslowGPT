@@ -1,0 +1,13 @@
+import { GetFreshestUnitedState } from "./GetFreshestUnitedState";
+
+/**
+ *
+ * @param {*} uniqueID
+ *
+ * @returns l'item ayant le bon uniqueId, si existant, ou null.
+ */
+export const GetFreshestItemByUniqueID = (uniqueID) => {
+  return GetFreshestUnitedState().find((item) => {
+    return item.uniqueId == uniqueID;
+  });
+};

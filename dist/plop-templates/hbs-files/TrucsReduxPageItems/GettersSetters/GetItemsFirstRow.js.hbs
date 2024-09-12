@@ -1,0 +1,19 @@
+import { store } from "src/reduxState/reduxStore";
+
+/**
+ *
+ * permet d'obtenir le premier row stocké actuellement dans Redux.
+ *
+ * Mais l'UI utilisant cette fonction restera figé quand le state redux change. !!!! ATTENTION
+ *
+ */
+
+export function GetGangPageFirstRow() {
+  const allGangPage = store.getState().GangPage.allRows;
+
+  if (allGangPage != null && allGangPage.length > 0) {
+    return allGangPage[0];
+  } else {
+    return allGangPage;
+  }
+}

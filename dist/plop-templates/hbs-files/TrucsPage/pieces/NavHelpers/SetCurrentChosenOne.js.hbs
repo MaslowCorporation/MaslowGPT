@@ -1,0 +1,30 @@
+import { SqliteReduxGangPageState } from "src/reduxState/GangPageState/GangPageStateGetterSetter";
+
+/**
+ * Set le nom de l'écran actuellement visionné à l'écran.
+ *
+ * Pour camoufler les autres péquenauds.
+ */
+export function SetCurrentChosenOne(newChosenOne, itemUniqueId) {
+  // getter
+  const GangPageState = SqliteReduxGangPageState.GetGangPageStateFirstRow();
+
+  // setter
+  SqliteReduxGangPageState.UpdateSpecificRowsFromDB({
+    row: {
+      ...GangPageState,
+
+      // le nouvel élu
+      chosenOne: newChosenOne,
+      itemUniqueId,
+    },
+    rowName: "uniqueId",
+    rowValue: "GangPageState",
+    onSuccess: (row) => {
+      /*console.log(
+        `state de page modifé avec succès dans GangPage.`
+      );*/
+    },
+    onError: (e) => {},
+  });
+}

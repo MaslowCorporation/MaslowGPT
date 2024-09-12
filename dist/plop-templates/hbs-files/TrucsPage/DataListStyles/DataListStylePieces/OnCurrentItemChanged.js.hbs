@@ -1,0 +1,41 @@
+import { SqliteReduxGangPageState } from "src/reduxState/GangPageState/GangPageStateGetterSetter";
+import { SetPageState } from "../../pieces/NavHelpers/SetPageState";
+
+/**
+ *
+ * @param {*} newIndex
+ */
+export function OnCurrentIndexChanged({ newIndex, route }) {
+  const GangPageState =
+    SqliteReduxGangPageState.GetGangPageStateFirstRow();
+
+  // l'index actuel stocké dans le state
+  const currentIndex = GangPageState.currentIndex;
+
+  // nous dit si l'index d'étape à changé
+  const indexChanged = currentIndex != newIndex;
+
+  // si l'index d'étape à changé,
+  // exécute cette callback.
+  if (indexChanged) {
+    // msg de change
+    /*console.log(
+      `current step changed ! from ${currentStepIndex} to ${newIndex}`
+    );*/
+
+    // on est par défaut en mode WatchVideo lors du
+    // passage d'une étape à une autre.
+    SetPageState({
+      ...GangPageState,
+
+      currentIndex: newIndex,
+    });
+  }
+  // sinon on n'exécute pas la callback de changement d'index
+  else {
+    // msg de stagnation
+    /*console.log(
+      `current step did not change... from ${currentStepIndex} to ${newIndex}`
+    );*/
+  }
+}

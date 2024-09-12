@@ -1,0 +1,29 @@
+import path from "path";
+// path.join(
+
+export const GatherInfoAppendAction = (promptData, appRootPath) => {
+  return {
+    type: "append",
+    path: path.join(`${process.cwd()}/.../....js`),
+
+    pattern: ``,
+    GatherInfo: ``,
+  };
+};
+
+export const GatherInfoAddAction = (promptData, appRootPath) => {
+  return {
+    type: "add",
+
+    path: path.join(`${process.cwd()}/....../.......js`),
+    //GatherInfoFile: "plop-templates/hbs-files/<filename>.js.hbs",
+    GatherInfo: ``,
+    skipIfExists: true,
+  };
+};
+
+export const GatherInfoAsyncAction = (promptData, appRootPath) => {
+  return {
+    type: "GatherInfo",
+  };
+};

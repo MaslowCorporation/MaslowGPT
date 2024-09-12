@@ -1,0 +1,13 @@
+import { Constants } from "src/constants/Constants.js";
+import { SetPageState } from "../../pieces/NavHelpers/SetPageState";
+import { SqliteReduxGangPageState } from "src/reduxState/GangPageState/GangPageStateGetterSetter";
+
+
+export function MarkScreenAsLoading() {
+    const GangPageState = SqliteReduxGangPageState.GetGangPageStateFirstRow();
+
+    SetPageState({
+        ...GangPageState,
+        isMounted: Constants.false,
+    });
+}

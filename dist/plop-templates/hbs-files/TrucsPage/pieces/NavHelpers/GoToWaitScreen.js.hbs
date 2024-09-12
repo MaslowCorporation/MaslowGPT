@@ -1,0 +1,27 @@
+import { SqliteReduxGangPageState } from "src/reduxState/GangPageState/GangPageStateGetterSetter";
+
+/**
+ * Let's go to the waiting screen
+ */
+export function GoToWaitScreen() {
+  // getter
+  const GangPageState = SqliteReduxGangPageState.GetGangPageStateFirstRow();
+
+  // setter
+  SqliteReduxGangPageState.UpdateSpecificRowsFromDB({
+    row: {
+      ...GangPageState,
+
+      // l'écran actuellement affiché dans GangPage.js
+      chosenOne: "Wait",
+    },
+    rowName: "uniqueId",
+    rowValue: "GangPageState",
+    onSuccess: (row) => {
+      /*console.log(
+        `state de page modifé avec succès dans GangPage.`
+      );*/
+    },
+    onError: (e) => {},
+  });
+}

@@ -1,0 +1,80 @@
+/* PLOP_INJECT_IMPORT */
+
+// un identifiant unique
+import { GetUniqueID } from 'src/services/GetUniqueID/GetUniqueID';
+
+// permet multilingue
+import i18next from 'i18next';
+import { SqliteReduxGangPage } from 'src/reduxState/GangPage/GangPageGetterSetter';
+
+import { SqliteReduxGangPageState } from 'src/reduxState/GangPageState/GangPageStateGetterSetter';
+
+/* PLOP_INJECT_GLOBAL_CODE */
+
+/**
+ *
+ * permet de donner un nom à notre item
+ */
+const GetGangPageItemName = () => {
+  /* PLOP_INJECT_CODE */
+  const xtoTxs5l = i18next.t('xtoTxs5l');
+  const xnOcW0xA = i18next.t('xnOcW0xA');
+
+  // getter, contient le state actuel
+  const GangPageState = SqliteReduxGangPageState.GetGangPageStateFirstRow();
+
+  const currentItemUniqueId = GangPageState.itemUniqueId;
+  const currentItem =
+    SqliteReduxGangPage.GetItemByUniqueID(currentItemUniqueId);
+
+  //console.log(`page state  = ${JSON.stringify(GangPageState)}`);
+  //console.log(`current item  uid = ${currentItemUniqueId}`);
+  //console.log(`current item  = ${JSON.stringify(currentItem)}`);
+
+  return {
+    // un identifiant unique
+    id: GetUniqueID(),
+
+    // un nom, nous permettant de gérer les récup de réponses choisies/écrites
+    name: 'GetGangPageItemName',
+
+    type: 'text', //"text" || "number" || "choices" || "custom",
+
+    // requis
+    description: ({ answers, answer, answerIndex }) => {
+      return xnOcW0xA;
+    },
+
+
+    // la valeur choisie/écrite par l'user
+    // null (par défaut)
+    value: currentItem?.name ?? null,
+
+    // la valeur par défaut a mettre dans le text input
+    defaultValue: ({ answers, answer, answerIndex }) => {
+      return answer?.value ?? currentItem?.name ?? undefined;
+    },
+
+    // les flex du message ou de la zone d'input
+    messageFlex: 1,
+    componentFlex: 1,
+
+    // la taille du texte du message
+    messageFontSize: 25,
+
+    // on montre le component d'input en premier, ou pas ?
+    componentFirst: true,
+
+    // un callback qui vérifie que l'input est valide
+    // true si valide false autrement
+    checkInput: ({ input, answers, answer, answerIndex }) => {
+      return answer?.value?.length > 0;
+    },
+    // un message d'erreur à afficher si les données ne sont pas valides
+    errMsg: ({ answers, answer, answerIndex }) => {
+      return xtoTxs5l;
+    },
+  };
+};
+
+export { GetGangPageItemName };

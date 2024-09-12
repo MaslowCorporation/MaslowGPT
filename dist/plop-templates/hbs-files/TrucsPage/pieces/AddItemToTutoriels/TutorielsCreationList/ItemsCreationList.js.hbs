@@ -1,0 +1,17 @@
+/* PLOP_INJECT_IMPORT */
+
+import { GetGangPageItemName } from "./Questions/GetGangPageItemName/GetGangPageItemName.js";
+
+/* PLOP_INJECT_GLOBAL_CODE */
+
+/**
+ *
+ * Ceci contient toutes les questions de GangPageCreationList
+ */
+const GangPageCreationList = () =>
+  [
+    /* PLOP_INJECT_CODE */
+    GetGangPageItemName(),
+  ]?.reverse();
+
+export { GangPageCreationList };

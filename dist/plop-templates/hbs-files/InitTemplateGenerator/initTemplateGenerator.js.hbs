@@ -1,0 +1,46 @@
+/* PLOP_INJECT_IMPORT */
+
+/*
+
+
+Dans ce fichier:
+
+renomme Logout en <command name pascalCase>
+renomme Logout en <command name CamelCase>
+renomme generatorName en <command name>
+renomme Cette commande permet de ..... en une description textuelle de cette commande.
+
+dans src/AllActions, copie/colle le dossier LogoutActions, 
+et renomme le en <command name camel>Actions.
+
+dans src/AllActions/<command name camel>Actions, 
+renomme le fichier LogoutActions.js en <command name pascal>Actions.js
+renomme le fichier initLogoutAndCie.js en init<command name camel>AndCie.js
+
+*/
+
+import { LogoutActions } from "../../AllActions/Logout/LogoutActions.js";
+import { LogoutPrompts } from "../../AllPrompts/Logout/LogoutPrompts.js";
+// eslint-disable-next-line no-unused-vars
+import { CommandNames } from "../../AppConstants/CommandNames.js";
+
+function initLogoutGenerator(plop, appRootPath) {
+  /* PLOP_INJECT_CODE */
+
+  plop.setGenerator(CommandNames.logout, {
+    description: "Cette commande permet de .....",
+
+    /**
+     * on demande à l'utilisateur
+     * divers informations permettant la
+     * création de notre chose.
+     *
+     */
+    prompts: LogoutPrompts(appRootPath),
+    actions: function (data) {
+      return LogoutActions(data, appRootPath, plop);
+    },
+  });
+}
+
+export { initLogoutGenerator };

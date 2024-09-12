@@ -1,0 +1,19 @@
+import { SqliteReduxGangPageState } from "src/reduxState/GangPageState/GangPageStateGetterSetter";
+
+/**
+ * Set le state de page.
+ */
+export function SetPageState(newPageState) {
+  // setter
+  SqliteReduxGangPageState.UpdateSpecificRowsFromDB({
+    row: newPageState,
+    rowName: "uniqueId",
+    rowValue: "GangPageState",
+    onSuccess: (row) => {
+      /*console.log(
+        `state de page modifé avec succès dans GangPage.`
+      );*/
+    },
+    onError: (e) => {},
+  });
+}

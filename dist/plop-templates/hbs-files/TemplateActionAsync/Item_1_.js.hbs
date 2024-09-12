@@ -1,0 +1,8 @@
+import { GatherInfoRequest } from "./pieces/GatherInfoRequest.js";
+
+function GatherInfo(plop, appRootPath) {
+  plop.setActionType("GatherInfo", async function (answers) {
+    await GatherInfoRequest(answers, appRootPath);
+  });
+}
+export { GatherInfo };
