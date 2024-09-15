@@ -151,6 +151,21 @@ You must subscribe to the [maslowcorporation Google Group](https://groups.google
 
 An Android app that ArduinoGPT needs, to install the Arduino programs on Arduino UNO devices, via USB/OTG
 
+[Maslow: Pre Release](https://play.google.com/apps/testing/com.maslow)
+
+You must subscribe to the [maslowcorporation Google Group](https://groups.google.com/g/maslowcorporation) to be able to install the Pre Release version of the app.
+
+An Android app that allows you to: 
+
+- create video tutorials, with a nice horizontal scrolling interface. This step creator lets you record individual steps, then edit them if needed. Edits like: add a audio message to the video step, trim the video, add text to the video
+
+- generate full length video tutorials by aggregating those simple steps into a beautiful full video that you can then download.
+
+- Share these tutorials with others,
+thanks to a nice horizontal scrolling interface, that lets you see the individual steps
+
+(An IOS version of this app is coming soon ;-)
+
 ## Quick Note about Free features
 
 Please note that you can still use MaslowGPT without subscribing to the API.
